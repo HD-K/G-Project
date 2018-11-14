@@ -1,0 +1,10 @@
+1000	Normal	U	
+2000	Normal	D	
+2500	Normal	U	
+3000	Normal	U	
+4000	Normal	D	
+4500	Normal	U	
+5000	Normal	U	
+6222	Normal	U	
+6444	Normal	D	
+6666	Normal	D	
