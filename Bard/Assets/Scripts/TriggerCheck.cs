@@ -24,9 +24,12 @@ public class TriggerCheck : MonoBehaviour
 
     }
 
-    private void Update()
+    void OnTriggerEnter(Collider collision)
     {
-        Check();
+        if (collision.transform.tag=="Note"){
+            Debug.Log("OK");
+            
+        }
     }
     void Check()
     {
