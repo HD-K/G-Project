@@ -15,9 +15,6 @@ public class CreateNotes : MonoBehaviour {
     public GameObject monsterPrefab;
     public GameObject Cube;
     public Transform[] points;
-
-    public float createTime = 2.0f;
-    public int maxMonster = 10;
     public List<GameObject> monsterPool;
     public TextAsset textAsset;
     bool isGameOver = false;
@@ -31,7 +28,6 @@ public class CreateNotes : MonoBehaviour {
     Movement movement;
     SongInfo type = new SongInfo();
     Vector3 position;
-        public Rigidbody _Rigidbody = null;
 
     // Use this for initialization
     void Start()
@@ -40,11 +36,10 @@ public class CreateNotes : MonoBehaviour {
         monsterPool = new List<GameObject>();
         points[0].transform.position = new Vector3(7.6f, -1.8f, -0.5f);
         points[1].transform.position = new Vector3(7.6f, -2.25f, -0.5f);
-        playSound("Indifferent_demo");
+
         noteData = new List<string>();
         noteCreate = new List<bool>();
-        _Rigidbody = GetComponent<Rigidbody>();
-        _Rigidbody.velocity = transform.right * -124.72f * Time.deltaTime;
+      
 
         TextAsset textAsset = (TextAsset)Resources.Load("Note(2)");
 
@@ -76,7 +71,7 @@ public class CreateNotes : MonoBehaviour {
 
             }
             noteCreate.Add(true);
-
+            
         }
 
         for (int i = 0; i < noteData.Count; i++)
@@ -84,17 +79,9 @@ public class CreateNotes : MonoBehaviour {
             GameObject monster = (GameObject)Instantiate(monsterPrefab);
             monster.SetActive(false);
             monsterPool.Add(monster);
-            monster.transform.position = NotePos(noteData[i][12].ToString());
-            distance = Vector3.Distance(Cube.transform.position, monster.transform.position);
         }
-        //StartCoroutine(CreateNode());  
     }
-    void playSound(string snd)
-    {
 
-        GameObject.Find(snd).GetComponent<AudioSource>().Play();
-
-    }
     private void FixedUpdate()
     {
         noteTime += Time.deltaTime;
@@ -105,25 +92,19 @@ public class CreateNotes : MonoBehaviour {
                 break;
             }
             //나와야 할 노트가 먼저라면
-            /*
-            if (noteTime <= _Rigidbody.velocity.x && noteCreate[i] == true)
-            {
-                monsterPool[0].transform.position = new Vector3(7.34f, -1.8f, -0.5f);
-                monsterPool[0].SetActive(true);
-                monsterPool[1].transform.position = new Vector3(0.01f, -2.25f, -0.5f);
-                monsterPool[1].SetActive(true);
-                monsterPool[2].transform.position = new Vector3(1.03f, -1.8f, -0.5f);
-                monsterPool[2].SetActive(true);
-            }
-            */
+
             if (noteTime <= (float.Parse(time[i]) / 1000)
                    && noteCreate[i] == true)
             {
                 monsterPool[i].transform.position = NotePos(noteData[i][12].ToString());
                 monsterPool[i].SetActive(true);
+                if (i > 33)
+                {
+                    monsterPool[i].transform.position = NotePos(noteData[i][13].ToString());
+                }
             }
-
         }
+
     }
     Vector3 NotePos(string name)
     {
