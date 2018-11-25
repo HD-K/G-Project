@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Music : MonoBehaviour {
 
-    public int delay = 1;
+    public float delay = 1f;
     AudioSource myAudio;
     public AudioClip audioClip;
     void Start()

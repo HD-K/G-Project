@@ -40,7 +40,9 @@ public class CreateNotes : MonoBehaviour {
         noteData = new List<string>();
         noteCreate = new List<bool>();
       
-
+        //타이밍값만 가지고 있는 노트/0초 노트? 어떠한 패턴 파일이든 동일하게 노트가 움직이는 시간을 같게?
+        //인게임 씬 하나. 패턴마다 Music의 딜레이값을 바꾼다면 계속해서 바꿔야 한다.
+        //
         TextAsset textAsset = (TextAsset)Resources.Load("Note(2)");
 
         StringReader sr = new StringReader(textAsset.text);
@@ -79,7 +81,10 @@ public class CreateNotes : MonoBehaviour {
             GameObject monster = (GameObject)Instantiate(monsterPrefab);
             monster.SetActive(false);
             monsterPool.Add(monster);
+
         }
+        distance = Vector3.Distance(Cube.transform.position, points[0].transform.position);
+        Debug.Log(distance);
     }
 
     private void FixedUpdate()
@@ -91,7 +96,6 @@ public class CreateNotes : MonoBehaviour {
             {
                 break;
             }
-            //나와야 할 노트가 먼저라면
 
             if (noteTime <= (float.Parse(time[i]) / 1000)
                    && noteCreate[i] == true)
@@ -102,9 +106,10 @@ public class CreateNotes : MonoBehaviour {
                 {
                     monsterPool[i].transform.position = NotePos(noteData[i][13].ToString());
                 }
-            }
-        }
 
+            }
+            
+        }
     }
     Vector3 NotePos(string name)
     {

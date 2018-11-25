@@ -23,8 +23,7 @@ GameObject:
   - component: {fileID: 135085328903392568}
   - component: {fileID: 54775235155530384}
   - component: {fileID: 114103526909420096}
-  - component: {fileID: 114632641295618656}
-  - component: {fileID: 114116228236536394}
+  - component: {fileID: 114205624076984000}
   m_Layer: 0
   m_Name: DefaultNode
   m_TagString: Note
@@ -71,18 +70,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f821c608ee556c9438d45be7c9b0201e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114116228236536394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459438119510178}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84896382781f1f419b8001d15799ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114632641295618656
+  _Rigidbody: {fileID: 0}
+  Speed: -124.72
+--- !u!114 &114205624076984000
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,6 +83,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103dda80a29987248a952da04365e728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boxCollider: {fileID: 0}
+  sprites: []
 --- !u!135 &135085328903392568
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -103,7 +95,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212674453091985256
 SpriteRenderer:

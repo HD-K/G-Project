@@ -7,9 +7,10 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance; //어디서나 접근할 수 있도록 static(정적)으로 자기 자신을 저장할 변수를 만듭니다.
     public Text scoreText; //점수를 표시하는 Text객체를 에디터에서 받아옵니다.
-    public Text JudgeText; //판정을 표시하는 Text
+    public string JudgeText; //판정을 표시하는 Text
+    public Image sprite;
     public Text ComboText; //콤보를 표시
-    private int combo = 0;
+    public int combo = 0;
     public int n;
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites = new Sprite[10];                //이미지 목록 
@@ -25,18 +26,18 @@ public class GameManager : MonoBehaviour {
 
     public void Judge(string note)
     {
-        JudgeText.text = note;
+        JudgeText = note;
     }
     public void AddCombo()
     {
         combo += 1;
-        ComboText.text = combo.ToString();
+        //ComboText.text = combo.ToString();
     }
     public void AddScore(int num) //점수를 추가해주는 함수를 만들어 줍니다.
     {
         
         score += num;
-        scoreText.text = score.ToString();
+        //scoreText.text = score.ToString();
         //gameObject.GetComponent<Image>().sprite = sprites[n]; //이미지 변경 
     }
     public void MissScore()
